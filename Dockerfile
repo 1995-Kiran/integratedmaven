@@ -9,7 +9,13 @@
 #
 # Package stage
 #
-FROM eclipse-temurin:17-jdk-jammy
-COPY target/*.jar /usr/local/lib/app.jar
+#FROM eclipse-temurin:17-jdk-jammy
+#COPY target/*.jar /usr/local/lib/app.jar
+#EXPOSE 8080
+#ENTRYPOINT ["java","-jar","/usr/local/lib/app.jar"]
+
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/*.jar /usr/local/lib/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/app.jar"]
+
