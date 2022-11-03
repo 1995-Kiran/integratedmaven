@@ -73,6 +73,13 @@ jobs:
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
 
+    - name: Deploy image to Amazon EKS
+      run: |
+        
+        kubectl apply -f eks/deployment.yml
+        kubectl apply -f eks/service.yml
+
+
     - name: deploy to cluster
       uses: kodermax/kubectl-aws-eks@master
       env:
@@ -96,8 +103,3 @@ jobs:
 
 
 
-    - name: Deploy image to Amazon EKS
-      run: |
-        
-        kubectl apply -f eks/deployment.yaml
-        kubectl apply -f eks/service.yaml
