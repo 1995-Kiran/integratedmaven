@@ -1,21 +1,7 @@
-#
-# Build stage -- // added build stage in github action
-#   
-# FROM maven:3.6.0-jdk-11-slim AS build
-# COPY src /home/app/src
-# COPY pom.xml /home/app
-# RUN mvn -f /home/app/pom.xml clean package
+FROM openjdk:20-ea-11-jdk
 
-#
-# Package stage
-#
-#FROM eclipse-temurin:17-jdk-jammy
-#COPY target/*.jar /usr/local/lib/app.jar
-#EXPOSE 8080
-#ENTRYPOINT ["java","-jar","/usr/local/lib/app.jar"]
+ADD kafkaStreams.jar kafkaStreams.jar
 
-FROM openjdk:11-jre-slim
-COPY --from=build /home/app/target/*.jar /usr/local/lib/app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/app.jar"]
+COPY start.sh .
 
+# ENTRYPOINT java -cp kafkaStreams.jar

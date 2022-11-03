@@ -1,0 +1,1 @@
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TRIGGERED_STRATEGIES --key-deserializer "org.apache.kafka.common.serialization.IntegerDeserializer" --property print.value=true --property print.key=true --from-beginning

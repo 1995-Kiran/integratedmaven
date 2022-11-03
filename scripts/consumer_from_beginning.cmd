@@ -1,0 +1,1 @@
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic BTCUSDT_10M --key-deserializer "org.apache.kafka.common.serialization.StringDeserializer" --property print.value=true --property print.key=true --from-beginning

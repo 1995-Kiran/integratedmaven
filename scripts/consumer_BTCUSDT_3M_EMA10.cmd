@@ -1,0 +1,1 @@
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic BTCUSDT_3M_EMA10  --property print.value=true --property print.key=true
